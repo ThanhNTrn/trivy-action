@@ -3,7 +3,7 @@ import sys
 import yaml
 
 
-def main(input_f, output_f):
+def main(input_f):
     try:
         with open(input_f, "r") as file:
             file = json.load(file)
@@ -26,7 +26,7 @@ def main(input_f, output_f):
                 elif policy.get('evaluation_result') == "Allowed":
                     yamlFile['license']['permissive'].append(policy.get('spdx_license'))
 
-            with open(output_f, 'w') as output:
+            with open("./trivy.yaml", 'w') as output:
                 yaml.dump(yamlFile, output)
     except FileNotFoundError:
         print(f"File not found: {input_file}")
@@ -37,10 +37,9 @@ def main(input_f, output_f):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 2:
         print(f"Usage: {sys.argv[0]} <input_file>")
         sys.exit(1)
 
     input_file = sys.argv[1]
-    output_file = sys.argv[2]
-    main(input_file, output_file)
+    main(input_file)

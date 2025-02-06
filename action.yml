@@ -4,9 +4,6 @@ inputs:
   license-policy:  # id of input
     description: 'input license policy to be converted'
     required: true
-  trivy-policy: # id of output
-    description: 'the converted license policy as trivy policy'
-    required: true
 outputs:
   trivy-yaml:
     description: 'The output file'
