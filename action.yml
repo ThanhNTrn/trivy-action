@@ -1,0 +1,15 @@
+name: 'convert-mw-policy-to-trivy'
+description: 'Converting mw policy from json to trivy-yaml format'
+inputs:
+  license-policy:  # id of input
+    description: 'input license policy to be converted'
+    required: true
+  trivy-policy: # id of output
+    description: 'the converted license policy as trivy policy'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.license-policy }}
+    - ${{ inputs.trivy-policy }}
