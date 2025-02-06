@@ -7,6 +7,9 @@ inputs:
   trivy-policy: # id of output
     description: 'the converted license policy as trivy policy'
     required: true
+outputs:
+  trivy-yaml:
+    description: 'The output file'
 runs:
   using: 'docker'
   image: 'Dockerfile'
